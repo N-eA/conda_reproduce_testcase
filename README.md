@@ -1,5 +1,7 @@
-This repo aims to test transfer and reproduce conda environments
-
+Testing conda-environments for:
+* cross platform transfer
+* reproducibility
+* integration within CI-process
 
 ## On local machine (using macOS)
 
