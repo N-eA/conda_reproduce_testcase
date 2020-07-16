@@ -47,4 +47,4 @@ install:
 
   script:
   # Your test script goes here
-  - cd src/tests && pytest .
+  - python execute_me.py
