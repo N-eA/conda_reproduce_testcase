@@ -48,4 +48,4 @@ install:
 
   script:
   # Your test script goes here
-  - python execute_me.py
+  - pytest execute_me_test.py
