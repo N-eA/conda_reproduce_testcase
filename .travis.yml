@@ -21,9 +21,9 @@ jobs:
       # macos 10.15.5
       osx_image: xcode12
 
-python:
+#python:
 #  - "3.6"
-  - "3.8"
+  - "3.7"
 
 install: 
   - "if [ \"$TRAVIS_OS_NAME\" = \"linux\" ]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi"
