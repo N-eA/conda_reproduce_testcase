@@ -19,6 +19,10 @@ matrix:
       # macos 10.15.5
       osx_image: xcode12
 
+python:
+  - "3.7"
+  - "3.8"
+
 install: 
   - "if [ \"$TRAVIS_OS_NAME\" = \"linux\" ]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi"
   - "if [ \"$TRAVIS_OS_NAME\" = \"osx\" ]; then wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh; fi"
@@ -27,8 +31,8 @@ install:
   #- "hash -r"
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
-  #- "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
-  - "conda create --yes --name reproduce-me-env python=3.8"
+  - "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
+  #- "conda create --yes --name reproduce-me-env python=3.8"
   - "conda activate reproduce-me-env"
   - "conda install --yes -c anaconda numpy pandas scipy pytest"
   - "conda info -a"
