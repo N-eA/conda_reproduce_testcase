@@ -1,42 +1,38 @@
-# template based on https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/use-conda-with-travis-ci.html
-#  https://docs.travis-ci.com/user/reference/osx
-#  https://docs.travis-ci.com/user/languages/python/
-# Are U workin???
-language: python
+"""
+Simple .travis.yml installing miniconda3 on two different distributions and one python version
 
-jobs:
+Template based on :
+https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/use-conda-with-travis-ci.html
+https://docs.travis-ci.com/user/reference/osx
+https://docs.travis-ci.com/user/languages/python/
+"""
+
+language: bash
+
+matrix:
   include:
+
     - os: linux
       dist: xenial
-
-   # - os: osx
-      # macos 10.13
-    #  osx_image: xcode10.1
-
-    #- os: osx
-      # macos 10.14.6
-      #osx_image: xcode11.3
 
     - os: osx
       # macos 10.15.5
       osx_image: xcode12
-
-python:
-#  - "3.6"
-  - "3.8"
 
 install: 
   - "if [ \"$TRAVIS_OS_NAME\" = \"linux\" ]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi"
   - "if [ \"$TRAVIS_OS_NAME\" = \"osx\" ]; then wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh; fi"
   - "bash miniconda.sh -b -p $HOME/miniconda"
   - "source \"$HOME/miniconda/etc/profile.d/conda.sh\""
-  - "hash -r"
+  #- "hash -r"
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
+  #- "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
+  - "conda create --yes --name reproduce-me-env python=3.8"
+  - "conda activate reproduce-me-env"
+  - "conda install --yes -c anaconda numpy pandas scipy pytest"
   - "conda info -a"
-  - "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
-  - "source activate reproduce-me-env"
-  - "conda install --yes numpy pandas scipy"
+  - "conda list"
 
 
 script:
