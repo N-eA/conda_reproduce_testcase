@@ -27,9 +27,8 @@ install:
   #- "hash -r"
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
-  # python 3.7 for minicoda (test)
-  - "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
-  #- "conda create --yes --name reproduce-me-env python=3.7"
+  #- "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
+  - "conda create --yes --name reproduce-me-env python=3.8"
   - "conda activate reproduce-me-env"
   - "conda install --yes -c anaconda numpy pandas scipy pytest"
   - "conda info -a"
