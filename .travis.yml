@@ -11,9 +11,8 @@ matrix:
       dist: xenial
 
     - os: osx
+      # macos 10.15.5
       osx_image: xcode12
-      language: generic
-      env: PYTHON=38
 
 python:
 #  - "3.6"
@@ -27,10 +26,10 @@ install:
   - "hash -r"
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
-  - "conda info -a"
   - "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
-  - "conda activate reproduce-me-env"
+  #- "conda activate reproduce-me-env"
   - "conda install --yes numpy pandas scipy"
+  - "conda info -a"
 
 
 script:
