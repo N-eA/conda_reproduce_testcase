@@ -2,7 +2,7 @@
 #  https://docs.travis-ci.com/user/reference/osx
 #  https://docs.travis-ci.com/user/languages/python/
 # Are U workin???
-language: python
+language: bash
 
 matrix:
   include:
@@ -14,9 +14,10 @@ matrix:
       # macos 10.15.5
       osx_image: xcode12
 
-python:
-#  - "3.6"
-  - "3.7"
+#Only works if language set to python, but as for now this seems to break osx xcode12 image     
+#Also as our python version is specified within conda we might not need this 
+#python:
+#  - "3.7"
 
 install: 
   - "if [ \"$TRAVIS_OS_NAME\" = \"linux\" ]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi"
@@ -27,8 +28,8 @@ install:
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
   # python 3.7 for minicoda (test)
-  #- "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
-  - "conda create --yes --name reproduce-me-env python=3.7"
+  - "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
+  #- "conda create --yes --name reproduce-me-env python=3.7"
   - "conda activate reproduce-me-env"
   - "conda install --yes -c anaconda numpy pandas scipy pytest"
   - "conda info -a"
@@ -36,6 +37,4 @@ install:
 
 
 script:
-  #- "conda info -a"
- # - "conda list"
   - pytest execute_me_test.py
