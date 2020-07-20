@@ -21,7 +21,7 @@ jobs:
       # macos 10.15.5
       osx_image: xcode12
 
-#python:
+python:
 #  - "3.6"
   - "3.8"
 
