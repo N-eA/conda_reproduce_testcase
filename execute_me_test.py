@@ -28,3 +28,6 @@ def test_pandas():
     ret_val = ages.max()
 
     assert ret_val == 58
+
+
+print("I am executed with python")
