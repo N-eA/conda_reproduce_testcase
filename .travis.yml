@@ -16,22 +16,24 @@ matrix:
 
 python:
 #  - "3.6"
-#  - "3.8"
+  - "3.7"
 
 install: 
   - "if [ \"$TRAVIS_OS_NAME\" = \"linux\" ]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi"
   - "if [ \"$TRAVIS_OS_NAME\" = \"osx\" ]; then wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh; fi"
   - "bash miniconda.sh -b -p $HOME/miniconda"
   - "source \"$HOME/miniconda/etc/profile.d/conda.sh\""
-  - "hash -r"
+  #- "hash -r"
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
+  # python 3.7 for minicoda (test)
   #- "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
-  - "conda create --yes --name reproduce-me-env python=3.8.3"
+  - "conda create --yes --name reproduce-me-env python=3.7"
   - "conda install --yes numpy pandas scipy"
-  # thats weird here
+  # do we really need this
   - "conda activate reproduce-me-env"
   - "conda info -a"
+  - "conda list"
 
 
 script:
