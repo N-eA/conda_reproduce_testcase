@@ -4,16 +4,22 @@
 # Are U workin???
 language: python
 
-matrix:
+jobs:
   include:
-
     - os: linux
       dist: xenial
 
+   # - os: osx
+      # macos 10.13
+    #  osx_image: xcode10.1
+
+    #- os: osx
+      # macos 10.14.6
+      #osx_image: xcode11.3
+
     - os: osx
+      # macos 10.15.5
       osx_image: xcode12
-      language: generic
-      env: PYTHON=38
 
 python:
 #  - "3.6"
@@ -29,7 +35,7 @@ install:
   - "conda update -q conda"
   - "conda info -a"
   - "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
-  - "conda activate reproduce-me-env"
+  - "source activate reproduce-me-env"
   - "conda install --yes numpy pandas scipy"
 
 
