@@ -29,9 +29,8 @@ install:
   # python 3.7 for minicoda (test)
   #- "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
   - "conda create --yes --name reproduce-me-env python=3.7"
-  - "conda install --yes numpy pandas scipy"
-  # do we really need this
   - "conda activate reproduce-me-env"
+  - "conda install --yes conda install -c anaconda numpy pandas scipy"
   - "conda info -a"
   - "conda list"
 
