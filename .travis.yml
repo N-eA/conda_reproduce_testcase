@@ -12,13 +12,12 @@ env:
     - CONDA_PYTHON_VERSION=3.8
     
   jobs:
-    include:
-      - os: linux
-        dist: xenial
+    - os: linux
+      dist: xenial
 
-      - os: osx
-        # macos 10.15.5
-        osx_image: xcode12
+    - os: osx
+      # macos 10.15.5
+      osx_image: xcode12
 
 
 install: 
