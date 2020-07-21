@@ -43,6 +43,7 @@ before_install:
 install:
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
+  # For future usage
   #- conda env create -n reproduce-me-env -f environment.yml
   - "conda create --yes --name reproduce-me-env python=$CONDA_PYTHON_VERSION"
   - "conda activate reproduce-me-env"
