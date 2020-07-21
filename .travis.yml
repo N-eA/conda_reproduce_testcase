@@ -4,7 +4,7 @@
 #https://docs.travis-ci.com/user/reference/osx
 #https://docs.travis-ci.com/user/languages/python/
 
-language: python
+language: bash
 
 matrix:
   include:
@@ -13,13 +13,12 @@ matrix:
       dist: xenial
 
     - os: osx
-      language: bash
       # macos 10.15.5
       osx_image: xcode12
 
-python:
-  - "3.7"
-  - "3.8"
+env:
+  CONDA_PYTHON_VERSION=3.8
+  CONDA_PYTHON_VERSION=3.7
 
 install: 
   - "if [ \"$TRAVIS_OS_NAME\" = \"linux\" ]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi"
@@ -29,7 +28,7 @@ install:
   #- "hash -r"
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
-  - "conda create --yes --name reproduce-me-env python=$TRAVIS_PYTHON_VERSION"
+  - "conda create --yes --name reproduce-me-env python=$CONDA_PYTHON_VERSION"
   #- "conda create --yes --name reproduce-me-env python=3.8"
   - "conda activate reproduce-me-env"
   - "conda install --yes -c anaconda numpy pandas scipy pytest"
