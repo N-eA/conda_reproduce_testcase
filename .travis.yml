@@ -25,7 +25,7 @@ matrix:
       osx_image: xcode12
       env: CONDA_PYTHON_VERSION=3.7
 
-    - name: 'ubuntu python 3.8'
+    - name: 'osx python 3.8'
       os: osx
       # macos 10.15.5
       osx_image: xcode12
