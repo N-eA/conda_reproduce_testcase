@@ -11,16 +11,23 @@ matrix:
 
     - os: linux
       dist: xenial
+      env: CONDA_PYTHON_VERSION=3.7
+
+    - os: linux
+      dist: xenial
+      env: CONDA_PYTHON_VERSION=3.8
 
     - os: osx
       # macos 10.15.5
       osx_image: xcode12
+      env: CONDA_PYTHON_VERSION=3.7
 
-env:
-  - CONDA_PYTHON_VERSION="3.7"
-  - CONDA_PYTHON_VERSION="3.8"
+    - os: osx
+      # macos 10.15.5
+      osx_image: xcode12
+      env: CONDA_PYTHON_VERSION=3.8
 
-install: 
+before_install: 
   - "if [ \"$TRAVIS_OS_NAME\" = \"linux\" ]; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh; fi"
   - "if [ \"$TRAVIS_OS_NAME\" = \"osx\" ]; then wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh; fi"
   - "bash miniconda.sh -b -p $HOME/miniconda"
@@ -28,10 +35,13 @@ install:
   #- "hash -r"
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
-  - "conda create --yes --name reproduce-me-env python=$CONDA_PYTHON_VERSION"
-  #- "conda create --yes --name reproduce-me-env python=3.8"
+  - echo $TRAVIS_PYTHON_VERSION
+  # Edit the environment.yml file for the target Python version
+  #- sed -i -E 's/(python=)(.*)/\1'$TRAVIS_PYTHON_VERSION'/' ./environment.yml
+  - conda env create -n reproduce-me-env -f environment.yml
+  #- "conda create --yes --name reproduce-me-env python=$CONDA_PYTHON_VERSION"
   - "conda activate reproduce-me-env"
-  - "conda install --yes -c anaconda numpy pandas scipy pytest"
+  #- "conda install --yes -c anaconda numpy pandas scipy pytest"
   - "conda info -a"
   - "conda list"
 
