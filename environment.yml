@@ -1,0 +1,11 @@
+name: reproduce_me
+channels:
+  - defaults
+dependencies:
+  - python
+  - scipy
+  - pandas
+  - numpy
+  - pytest
+prefix: /Users/nea/anaconda3/envs/reproduce_me
+
