@@ -2,8 +2,6 @@
 # The environment.yml used here has been created by using this command: conda env export --from-history > environment.yml 
 
 
-
-
 language: bash
 
 matrix:
