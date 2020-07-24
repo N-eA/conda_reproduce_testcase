@@ -7,5 +7,4 @@ dependencies:
   - pandas
   - numpy=1.6.*
   - pytest
-prefix: /Users/nea/anaconda3/envs/reproduce_me
 
