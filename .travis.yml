@@ -1,8 +1,10 @@
-#Simple .travis.yml installing miniconda3 on two different distributions and one python version
-#Template based on :
-#https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/use-conda-with-travis-ci.html
-#https://docs.travis-ci.com/user/reference/osx
-#https://docs.travis-ci.com/user/languages/python/
+# .travis.yml installing miniconda3 on two different distributions and two python versions
+#
+# For further information regarding the design, consider reading:
+# https://stackoverflow.com/questions/43329458/multiple-python-versions-with-anaconda-and-travis
+# https://docs.travis-ci.com/user/reference/osx
+#https://medium.com/@jaykindell/if-youre-using-travis-ci-a-common-way-to-customize-the-build-process-is-to-define-environment-f7915b046f44
+
 
 language: bash
 

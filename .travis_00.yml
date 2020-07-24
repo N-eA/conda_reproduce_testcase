@@ -1,11 +1,9 @@
-"""
-Simple .travis.yml installing miniconda3 on two different distributions and one python version
-
-Template based on :
-https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/use-conda-with-travis-ci.html
-https://docs.travis-ci.com/user/reference/osx
-https://docs.travis-ci.com/user/languages/python/
-"""
+#Simple .travis.yml installing miniconda3 on two different distributions and one python version
+#
+#Template based on :
+#https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/use-conda-with-travis-ci.html
+#https://docs.travis-ci.com/user/reference/osx
+#https://docs.travis-ci.com/user/languages/python/
 
 language: bash
 
